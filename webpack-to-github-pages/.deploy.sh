@@ -3,8 +3,10 @@
 # Declaring variables here since it's only two.
 # Once this script grow bigger we can outsource them
 # into separate file like shown below.
-gh_user=crowdbotics
-gh_repository=dashboard-vue-production
+gh_user=GITHUB_USER
+gh_repository=GITHUB_REPOSITORY
+push_user=PUSH_USER
+push_email=PUSH_EMAIL
 # build_command=BUILD_COMMAND
 build_command=build
 
@@ -30,7 +32,7 @@ npm run ${build_command}
 (
 cd dist
 git add .
-git -c user.name="CircleCI" -c user.email="deployment@crowdbotics.com" commit \
+git -c user.name="${push_user}" -c user.email="${push_email}" commit \
     -m "$(cd .. && git log -1 --pretty=%B)"
 if [ "$?" -ne "0" ]; then
   echo "Last commit in development repository does not exists"
