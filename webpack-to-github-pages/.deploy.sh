@@ -31,14 +31,14 @@ npm run ${build_command}
 # Pushing new code to production
 (
 cd dist
-git add .
+git add -A
 git -c user.name="${push_user}" -c user.email="${push_email}" commit \
     -m "$(cd .. && git log -1 --pretty=%B)"
 if [ "$?" -ne "0" ]; then
   echo "Last commit in development repository does not exists"
   git commit -m "$(date +%Y-%m-%d:%H:%M:%S)"
 fi
-git push
+git push origin master
 )
 
 # Removing dist folder
