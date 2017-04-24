@@ -5,6 +5,7 @@
 # into separate file like shown below.
 gh_user=GITHUB_USER
 gh_repository=GITHUB_REPOSITORY
+build_command=build
 
 # Importing variables
 # source ./.deployconf
@@ -19,7 +20,7 @@ git clone git@github.com:${gh_user}/${gh_repository}.git dist
 (cd dist && rm -rf *)
 
 # Building project for production
-npm run build
+npm run ${build_command}
 
 # Pushing new code to production
 (
