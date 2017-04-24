@@ -5,6 +5,7 @@
 # into separate file like shown below.
 gh_user=GITHUB_USER
 gh_repository=GITHUB_REPOSITORY
+# build_command=BUILD_COMMAND
 build_command=build
 
 # Importing variables
