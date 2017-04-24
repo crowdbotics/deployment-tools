@@ -4,7 +4,7 @@
 # Once this script grow bigger we can outsource them
 # into separate file like shown below.
 gh_user=GITHUB_USER
-gh_repository=GITHUB_REPO
+gh_repository=GITHUB_REPOSITORY
 
 # Importing variables
 # source ./.deployconf
