@@ -19,7 +19,7 @@ rm -rf dist
 # Clonning production repository to dist folder
 git clone git@github.com:${gh_user}/${gh_repository}.git dist
 
-# Deleting everything old from production
+# Deleting everything old from production except CNAME file
 (
 cd dist
 ls | grep -v CNAME | xargs rm -rf
