@@ -3,8 +3,8 @@
 # Declaring variables here since it's only two.
 # Once this script grow bigger we can outsource them
 # into separate file like shown below.
-gh_user=GITHUB_USER
-gh_repository=GITHUB_REPOSITORY
+gh_user=crowdbotics
+gh_repository=dashboard-vue-production
 # build_command=BUILD_COMMAND
 build_command=build
 
@@ -18,7 +18,10 @@ rm -rf dist
 git clone git@github.com:${gh_user}/${gh_repository}.git dist
 
 # Deleting everything old from production
-(cd dist && rm -rf *)
+(
+cd dist
+ls | grep -v CNAME | xargs rm -rf
+)
 
 # Building project for production
 npm run ${build_command}
@@ -26,13 +29,14 @@ npm run ${build_command}
 # Pushing new code to production
 (
 cd dist
-git add -A
-git commit -m "$(cd .. && git log -1 --pretty=%B)"
+git add .
+git -c user.name="CircleCI" -c user.email="deployment@crowdbotics.com" commit \
+    -m "$(cd .. && git log -1 --pretty=%B)"
 if [ "$?" -ne "0" ]; then
-  echo "No last commit in development repository"
+  echo "Last commit in development repository does not exists"
   git commit -m "$(date +%Y-%m-%d:%H:%M:%S)"
 fi
-git push origin +master
+git push
 )
 
 # Removing dist folder
