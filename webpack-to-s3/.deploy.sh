@@ -1,8 +1,21 @@
+# Credentials section
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+bucket=BUCKET_NAME
+region=REGION_NAME (for example us-west-1)
+slack_endpoint=https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+
+
+# Removing old dist
 rm -rf dist
-export AWS_ACCESS_KEY_ID=AKIAIXZXFI4DMGGYMUNA
-export AWS_SECRET_ACCESS_KEY=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
-npm run deploy -- --region us-west-1 --bucket dashboard-vue &&
+
+# Executing deploy script from package.json with region and bucket from credentials
+# above. Also, if deploy was successful sending POST request to slack endpoint,
+# to activate hook.
+npm run deploy -- --region ${region} --bucket ${bucket} &&
   curl -X POST -H 'Content-type: application/json' \
   --data "{\"text\":\"New version has been delivered to S3!\nLast commit: $(git log -1 --pretty=%B)\"}" \
-  https://hooks.slack.com/services/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
+  ${slack_endpoint}
+
+# Removing new dist after deploy
 rm -rf dist
