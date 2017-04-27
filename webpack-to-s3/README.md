@@ -1,15 +1,13 @@
-First of all, make sure you installed [s3-deploy](https://www.npmjs.com/package/s3-deploy) as development dependency.
-
-To install it just execute:
+## Step 1
+Make sure you installed [s3-deploy](https://www.npmjs.com/package/s3-deploy) as a development dependency.
 ```bash
 yarn add --dev s3-deploy
-```
-or
-```bash
+# or
 npm install --save-dev s3-deploy
 ```
 
-After it you need to create script in `package.json` for deployment like this:
+## Step 2
+Create script in `package.json` for deployment:
 
 ```json
 {
@@ -19,9 +17,11 @@ After it you need to create script in `package.json` for deployment like this:
 }
 ```
 
-Now you need to choose one of AWS authentication [methods](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)
+## Step 3
+Choose one of AWS authentication [methods](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence), which is suitable for your needs. (script below will be using environment variables)
 
-We will be using environment variable method:
+## Step 4
+Download or just copy-paste this script to your `.deploy.sh` file. Change your credentials, aws bucket and region, your slack hook endpoint.
 
 ```bash
 rm -rf dist
@@ -34,6 +34,8 @@ npm run deploy -- --region us-west-1 --bucket dashboard-vue &&
 rm -rf dist
 ```
 
+## Step 5
+Configure your CI system to execute the script after successful build. Here's an example for **CircleCI**, you need to paste this configuration to `circle.yml`.
 ```yaml
 deployment:
   production:
