@@ -19,7 +19,8 @@ Create script in `package.json` for deployment:
 
 ## Step 3
 Choose one of the AWS authentication [methods](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence), which is suitable for your needs. (script below will be using environment variables)
-**Be careful! Don't let your credentials be pushed to public repositories**
+
+**Be careful! Don't let your credentials be pushed to public repositories!**
 
 ## Step 4
 Download or just copy-paste this script to your `.deploy.sh` file. Change your credentials, aws bucket and region, your slack hook endpoint.
