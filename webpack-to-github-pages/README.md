@@ -1,4 +1,4 @@
-Note, this script will work only if you configured `HtmlWebpackPlugin`, which handles `index.html` and copies it to the `dist/` folder.
+Note, this script will work only if you configured `HtmlWebpackPlugin`, which handles `index.html` and copies it to the `dist/` folder after build process.
 
 To use the script:
 
