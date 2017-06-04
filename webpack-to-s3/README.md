@@ -2,19 +2,25 @@ Note, this script will work only if you configured `HtmlWebpackPlugin`, which ha
 
 ## Step 1
 Make sure you installed [s3-deploy](https://www.npmjs.com/package/s3-deploy) as a development dependency.
-```bash
-yarn add --dev s3-deploy
-# or
-npm install --save-dev s3-deploy
-```
+`yarn add --dev s3-deploy` or `npm install --save-dev s3-deploy`
 
 ## Step 2
-Create script in `package.json` for deployment:
+Create `deploy` script in `package.json` with s3-deploy package:
 
+### Recipes
+All files from `dist/` to S3 bucket root. (vue-cli webpack template)
 ```json
 {
   "scripts": {
     "deploy": "npm run build && s3-deploy './dist/**' --cwd './dist/'"
+  }
+}
+```
+`index.html` to S3 bucket root plus dist folder. (vue-clie webpack-simple template)
+```json
+{
+  "scripts": {
+    "deploy": "npm run build && s3-deploy 'index.html' './dist/**' --cwd '.'"
   }
 }
 ```
