@@ -1,5 +1,3 @@
-Note, this script will work only if you configured `HtmlWebpackPlugin`, which handles `index.html` and copies it to the `dist/` folder after build process.
-
 ## Step 1
 Make sure you installed [s3-deploy](https://www.npmjs.com/package/s3-deploy) as a development dependency.
 `yarn add --dev s3-deploy` or `npm install --save-dev s3-deploy`
